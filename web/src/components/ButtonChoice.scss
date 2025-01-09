@@ -1,0 +1,42 @@
+.button-choice-container-principal {
+    width: 100%;
+    height: fit-content;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    .button-choice-container {
+        display: flex;
+        gap: 10px;
+    
+        .button-choice-item {
+            padding: 10px;
+            border: none;
+            background-color: rgb(29, 29, 29);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            color: #fff;
+            transition: all 0.2s;
+            width: 90px;
+        
+            &.selected {
+                background-color: rgb(155, 137, 102);
+                box-shadow: 0px 4px 15px -4px rgba(155, 137, 102, 0.8) !important;
+            }
+        
+            &:hover {
+                background-color: rgb(155, 137, 102);
+                box-shadow: 0px 4px 15px -4px rgba(155, 137, 102, 0.8) !important;
+            }
+        
+            .button-logo {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+}

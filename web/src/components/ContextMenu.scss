@@ -1,0 +1,20 @@
+.select-input {
+    margin-top: 5px;
+    width: 55px;    
+    height: 40px;   
+
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    border: none;
+    font-size: 12px;
+    background-color: rgb(29, 29, 29);
+    color: #fff;
+    transition: border-color 0.3s ease;
+
+    &:focus {
+        border-color: rgba(155, 137, 102) !important;
+        outline: none !important;
+    }
+}
