@@ -355,7 +355,7 @@ RegisterNUICallback("save", function(data, cb)
 
     Wait(1000)
 
-    TriggerEvent("iCreator:finished", data.diseaseData, data.identityData)
+    TriggerServerEvent("iCreator:finished", data.diseaseData, data.identityData)
 end)
 
 RegisterNUICallback("reset", function(data, cb)
