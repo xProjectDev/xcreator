@@ -55,15 +55,11 @@ Le script permet aussi d'utiliser une commande admin configurable pour ouvrir le
 Voici un exemple pour ouvrir le créateur de personnage lorsqu'un joueur spawn depuis le serveur :
 
 ```lua
-AddEventHandler('esx:playerLoaded', function(playerId, xPlayer)
-    MySQL.Async.fetchScalar('SELECT skin FROM users WHERE identifier = @identifier', {
-        ['@identifier'] = xPlayer.identifier
-    }, function(skin)
-        if not skin then
-            -- Si le joueur n'a pas de skin, ouvrir le créateur
-            TriggerClientEvent('iCreator:openCreator', playerId, 0, false)
-        end
-    end)
+AddEventHandler('esx:playerLoaded', function(playerId, xPlayer, isNew)
+    if isNew then
+      -- Si le joueur n'a pas de skin, ouvrir le créateur
+      TriggerClientEvent('iCreator:openCreator', playerId, 0, false)
+    end
 end)
 ```
 
@@ -90,16 +86,11 @@ end)
 Depuis le côté client, vous pouvez ouvrir directement le créateur avec cette logique :
 
 ```lua
-RegisterNetEvent('esx:playerLoaded', function()
-    ESX.TriggerServerCallback("esx_skin:getPlayerSkin", function(skin)
-        if skin == nil then
+RegisterNetEvent('esx:playerLoaded', function(xPlayer, isNew, skin)
+        if skin == nil or isNew then
             TriggerEvent('iCreator:openCreator', 0, false)
             Wait(100)
-        else
-            TriggerEvent("skinchanger:loadSkin", skin)
-            Wait(100)
         end
-    end)
 end)
 ```
 ---
